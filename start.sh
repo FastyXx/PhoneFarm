@@ -7,14 +7,14 @@ INSTALL_DIR="/sdcard/ccminer"
 PROCESS_NAME="ccminer"
 
 # Start ccminer
-~/ccminer/ccminer -c ~/ccminer/config.json &
+./ccminer -c config.json &
 
 # Monitor ccminer and restart if it stops
 while true; do
   ps aux | grep "$PROCESS_NAME" > /dev/null
   if [ $? -ne 0 ]; then
     echo "ccminer is not running, restarting..."
-    ~/ccminer/ccminer -c ~/ccminer/config.json &
+    ./ccminer -c config.json &
   fi
   sleep 60
 done
